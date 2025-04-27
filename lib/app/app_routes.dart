@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:taskM360/features/auth/ui/screens/verify_otp.dart';
+import 'package:taskM360/features/auth/ui/screens/verify_otp_screen.dart';
 import 'package:taskM360/features/home/data/models/place_model.dart';
 import 'package:taskM360/features/home/ui/screens/home_screen.dart';
 
-import '../features/auth/ui/screens/login_screen.dart';
-import '../features/auth/ui/screens/otp_screen.dart';
+import '../features/auth/ui/screens/signin_screen.dart';
+import '../features/auth/ui/screens/send_otp_screen.dart';
 import '../features/auth/ui/screens/reset_screen.dart';
 import '../features/auth/ui/screens/signup_screen.dart';
 import '../features/auth/ui/screens/splash_screen.dart';

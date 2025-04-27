@@ -2,6 +2,7 @@ class Place {
   final String title;
   final dynamic ppm; // CO₂ parts per million
   final int people;
+  final int percentChange;
   final int rooms;
   final int area;
   final int ac;
@@ -15,6 +16,7 @@ class Place {
     required this.title,
     required this.ppm,
     this.people = 0,
+    this.percentChange = 0,
     this.rooms = 0,
     this.area = 0,
     this.ac = 0,

@@ -6,7 +6,6 @@ import '../../../../app/app_colors.dart';
 import '../../../auth/ui/controllers/auth_controller.dart';
 import '../controllers/place_controller.dart';
 import '../widgets/airquality_card.dart';
-import 'add_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String name = '/homeScreen';
@@ -155,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: AirQualityCard(
                                 title: place.title,
                                 ppmValue: place.ppm,
-                                percentChange: place.rooms,
+                                percentChange: place.percentChange,
                                 status: 'Good',
                                 avatarUrls: ctrl.avatarUrls,
                                 onViewDetails: () {

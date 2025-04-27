@@ -9,6 +9,8 @@ import '../widgets/form_field.dart';
 class SendOTPScreen extends StatelessWidget {
   static const String name = '/signOTPScreen';
 
+  const SendOTPScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final TextEditingController passwordController = TextEditingController();
@@ -33,7 +35,9 @@ class SendOTPScreen extends StatelessWidget {
               'Recover your account in easy steps',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.w300,
-                  fontSize: 14
+                  fontSize: 14,
+                fontFamily: "Inter",
+
               ),
             ),
             Spacer(),

@@ -9,103 +9,36 @@ import '../../data/models/place_model.dart';
 import '../controllers/details_controller.dart';
 import '../widgets/stacked_images.dart';
 
-class DetailsScreen extends StatefulWidget {
+class DetailsScreen extends StatelessWidget {
   static const String name = '/detailsScreen';
   final Place place;
   final List<String> avatars;
 
-  const DetailsScreen({Key? key, required this.place,    required this.avatars,
-  }) : super(key: key);
+  const DetailsScreen({super.key, required this.place,    required this.avatars,
+  });
 
-
-  @override
-  State<DetailsScreen> createState() => _DetailsScreenState();
-}
-
-class _DetailsScreenState extends State<DetailsScreen> {
-  // final List<FlSpot> dataSpots = [
-  //   FlSpot(0, 2), // Start of actual data at x = 0, y = 2
-  //   FlSpot(1, 3),
-  //   FlSpot(2, 5),
-  //   FlSpot(3, 4),
-  //   FlSpot(4, 4.2),
-  //   FlSpot(5, 4.5),
-  //   FlSpot(6, 1.8),
-  // ];
-  //
-  //
-  // final Map<int, String> bottomTitles = {
-  //   0: 'Oct\n24',
-  //   1: 'Nov\n24',
-  //   2: 'Dec\n24',
-  //   3: 'Jan\n25',
-  //   4: 'Feb\n25',
-  //   5: 'Mar\n25',
-  //   6: 'Apr\n25',
-  // };
 
   @override
   Widget build(BuildContext context) {
-    final place = widget.place;
     final ctrl = Get.put(DetailsController(place));
     int showCount;
     int extraCount = 0;
-    //
-    // if (ctrl.avatarUrls.length <= 4) {
-    //   showCount = ctrl.avatarUrls.length;
-    // } else if (ctrl.avatarUrls.length == 5) {
-    //   showCount = 3;
-    //   extraCount = 2;
-    // } else if (ctrl.avatarUrls.length == 6) {
-    //   showCount = 5;
-    //   extraCount = 1;
-    // } else {
-    //   showCount = 5;
-    //   extraCount = ctrl.avatarUrls.length - 5;
-    // }
-    //
-    // final avatarWidgets =
-    // ctrl.avatarUrls.take(showCount).map((url) {
-    //       return CircleAvatar(
-    //         radius: 24,
-    //         backgroundColor: Colors.white,
-    //         child: CircleAvatar(radius: 22, backgroundImage: NetworkImage(url)),
-    //       );
-    //     }).toList();
-
-    // if (extraCount > 0) {
-    //   avatarWidgets.add(
-    //     CircleAvatar(
-    //       radius: 24,
-    //       backgroundColor: Colors.white,
-    //       child: CircleAvatar(
-    //         radius: 22,
-    //         backgroundColor: Colors.grey.shade400,
-    //         child: Text(
-    //           '+$extraCount',
-    //           style: const TextStyle(color: Colors.white, fontSize: 14),
-    //         ),
-    //       ),
-    //     ),
-    //   );
-    // }
 
 
-    if (widget.avatars.length <= 4) {
-      showCount = widget.avatars.length;
-    } else if (widget.avatars.length == 5) {
+    if (avatars.length <= 4) {
+      showCount = avatars.length;
+    } else if (avatars.length == 5) {
       showCount = 3;
       extraCount = 2;
-    } else if (widget.avatars.length == 6) {
+    } else if (avatars.length == 6) {
       showCount = 5;
       extraCount = 1;
     } else {
       showCount = 5;
-      extraCount = widget.avatars.length - 5;
+      extraCount = avatars.length - 5;
     }
 
-    // 2) Build the visible avatar widgets
-    final avatarWidgets = widget.avatars
+    final avatarWidgets = avatars
         .take(showCount)
         .map((url) => CircleAvatar(
       radius: 16,
@@ -114,7 +47,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
     ))
         .toList();
 
-    // 3) If there’s overflow, add the +N badge
     if (extraCount > 0) {
       avatarWidgets.add(
         CircleAvatar(
@@ -134,50 +66,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
     return Scaffold(
 
-      backgroundColor: Color.fromRGBO(250, 255, 253, 1),
-      // appBar: AppBar(
-      //   automaticallyImplyLeading: false, // <-- Disable default back button
-      //   title: Row(
-      //     children: [
-      //       IconButton(
-      //         icon: const Icon(Icons.arrow_back_ios),
-      //         onPressed: () => Navigator.pop(context),
-      //       ),
-      //       const SizedBox(width: 8), // <-- Space between back button and home icon
-      //       Image.asset(AssetsPath.homeButton, height: 28),
-      //       const SizedBox(width: 10),
-      //       Text(
-      //         "Home",
-      //         style: Theme.of(context).textTheme.titleLarge,
-      //       ),
-      //     ],
-      //   ),
-      //   actions: [
-      //     Container(
-      //       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-      //       margin: const EdgeInsets.only(right: 10), // <-- Margin to push inside
-      //       decoration: BoxDecoration(
-      //         gradient: const LinearGradient(
-      //           colors: [
-      //             Color(0xFF42D58B),
-      //             Color(0xFF65D49C),
-      //             Color(0xFF47BA80),
-      //             Color(0xFF2DF28F),
-      //           ],
-      //         ),
-      //         borderRadius: BorderRadius.circular(20),
-      //       ),
-      //       child: Text(
-      //         "Good",
-      //         style: Theme.of(context).textTheme.titleMedium?.copyWith(
-      //           color: Colors.white,
-      //           fontWeight: FontWeight.w700,
-      //           fontSize: 12,
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // ),
+      backgroundColor: AppColors.backGroundColor,
+
       body: Padding(
         padding: const EdgeInsets.all(22.0),
         child: SingleChildScrollView(
@@ -185,7 +75,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-          /// Custom Header
           Padding(
           padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 24),
           child: Row(
@@ -274,7 +163,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                               children: [
                                 Image.asset(AssetsPath.dropDownIcon, height: 5),
                                 Text(
-                                  ' 13%',
+                                  ' ${place.percentChange}%',
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600,
@@ -343,7 +232,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ],
                 ),
               ),
-          
+
               SizedBox(
                 height: 220,
                 child: Stack(
@@ -387,7 +276,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     radius: 5,
                                     color: Colors.white,
                                     strokeColor: Color.fromRGBO(45, 242, 143, 1),
-          
+
                                     strokeWidth: 2,
                                   );
                                 },
@@ -400,7 +289,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             drawVerticalLine: true,
                             getDrawingHorizontalLine:
                                 (value) => FlLine(
-                                  color: Colors.green.withOpacity(0.15),
+                                  color: Colors.green.withAlpha(38),
                                   strokeWidth: 1,
                                 ),
                             getDrawingVerticalLine:
@@ -457,8 +346,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         ),
                       ),
                     ),
-          
-                    // Overlay vertical lines up to each dot, connected to the border
+
                     Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16,
@@ -469,12 +357,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           // Get the exact same dimensions the chart uses
                           final chartWidth = constraints.maxWidth;
                           // final chartHeight = constraints.maxHeight;
-          
+
                           // These must match your chart's min/max values
                           final minX = -1.0;
                           final maxX = 6.0;
-                          final minY = 0.0;
-                          final maxY = 6.0;
+
                           final paddingTop =
                               8.0; // Adjust based on titlesData/reservedSpace
                           final paddingBottom =
@@ -489,14 +376,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                   final xPercent =
                                       (spot.x - minX) / (maxX - minX);
                                   final dx = xPercent * chartWidth;
-          
+
                                   // Calculate Y position (chart coordinates are inverted)
-                                  final yPercent =
-                                      (spot.y - minY) / (maxY - minY);
+                                  // final yPercent =
+                                  //     (spot.y - minY) / (maxY - minY);
                                   final dy =
                                       paddingTop +
                                       (1 - (spot.y / yRange)) * chartHeight;
-          
+
                                   return Positioned(
                                     left: dx - 0.5, // Center the 1px line
                                     top: dy,
@@ -533,7 +420,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ],
                 ),
               ),
-          
+
               SizedBox(height: 20),
 
               Row(
@@ -547,7 +434,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
+                            color: Colors.grey.withAlpha(51),
                             blurRadius: 5,
                             spreadRadius: 2,
                           ),
@@ -631,18 +518,17 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ),
                 ],
               ),
-          
+
               SizedBox(height: 20),
               Container(
-                // Outer container with white background
-                // padding: EdgeInsets.all(16),
+
                 height: 150,
                 decoration: BoxDecoration(
                   color: Colors.white, // White background
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
+                      color: Colors.grey.withAlpha(51),
                       blurRadius: 5,
                       spreadRadius: 2,
                     ),
@@ -665,20 +551,18 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 color: AppColors.themeColor,
                               ),
                             ),
-          
+
                             Image.asset(AssetsPath.leaf, height: 55),
                           ],
                         ),
                       ),
                     ),
                     Spacer(),
-          
-                    // Left container for Icon and label with green background
+
                     Container(
                       height: 180,
                       width: 162,
-          
-                      // padding: EdgeInsets.all(18),
+
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(AssetsPath.box),
@@ -698,7 +582,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         ),
                       ),
                     ),
-                    // Right container for the number with a large font
                   ],
                 ),
               ),

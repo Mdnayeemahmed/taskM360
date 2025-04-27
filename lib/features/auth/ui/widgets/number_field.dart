@@ -25,10 +25,9 @@ class PhoneNumberWidget extends StatelessWidget {
         children: [
           Text(
             label,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Colors.black54,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w500,
+                fontSize: 12
             ),
           ),
           const SizedBox(height: 4),

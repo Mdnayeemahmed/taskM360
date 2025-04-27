@@ -6,6 +6,8 @@ import '../widgets/password_field.dart';
 class ResetPasswordScreen extends StatelessWidget {
   static const String name = '/resetPasswordScreen';
 
+  const ResetPasswordScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final TextEditingController passwordController = TextEditingController();
@@ -29,9 +31,7 @@ class ResetPasswordScreen extends StatelessWidget {
             PasswordField(
               label: "New Password",
               controller: passwordController,
-              onChanged: (value) {
-                print("Password: $value");
-              },
+
             ),
             SizedBox(
               height: 20,
@@ -39,9 +39,7 @@ class ResetPasswordScreen extends StatelessWidget {
             PasswordField(
               label: "Confirm Password",
               controller: passwordController,
-              onChanged: (value) {
-                print("Password: $value");
-              },
+
             ),
             Spacer(),
 
@@ -50,10 +48,10 @@ class ResetPasswordScreen extends StatelessWidget {
                 Navigator.pushReplacementNamed(context, '/signInScreen'); // Or your named route
 
               },
-              child: Text('Reset Password'),
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(double.infinity, 50),
               ),
+              child: Text('Reset Password'),
             ),
             Spacer(),
             Align(

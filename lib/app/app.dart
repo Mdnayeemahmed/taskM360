@@ -1,17 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:taskM360/features/auth/ui/screens/login_screen.dart';
-import 'package:taskM360/features/auth/ui/screens/otp_screen.dart';
-import 'package:taskM360/features/auth/ui/screens/reset_screen.dart';
-import 'package:taskM360/features/auth/ui/screens/signup_screen.dart';
-import 'package:taskM360/features/auth/ui/screens/verify_otp.dart';
-
-import '../features/auth/ui/screens/splash_screen.dart';
-import '../features/home/ui/screens/details_screen.dart';
-import '../features/home/ui/screens/home_screen.dart';
-import '../features/home/ui/screens/result_screen.dart';
-import '../features/home/ui/widgets/scale.dart';
 import 'app_colors.dart';
 import 'app_routes.dart';
 import 'controller_binder.dart';
@@ -34,7 +23,8 @@ class _TaskM360State extends State<TaskM360> {
       theme: ThemeData(
         fontFamily: "Poppins",
           colorSchemeSeed: AppColors.themeColor,
-          scaffoldBackgroundColor: Colors.white,
+          scaffoldBackgroundColor: AppColors.backGroundColor,
+
           textTheme: const TextTheme(
 
               titleLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
@@ -44,19 +34,24 @@ class _TaskM360State extends State<TaskM360> {
           ),
 
           inputDecorationTheme: const InputDecorationTheme(
-              contentPadding: EdgeInsets.symmetric(horizontal: 16),
+            contentPadding: const EdgeInsets.symmetric(vertical: 6.0),
               // border: OutlineInputBorder(
               //   borderSide: BorderSide(color: AppColors.themeColor),
               // ),
               // enabledBorder: OutlineInputBorder(
               //   borderSide: BorderSide(color: AppColors.themeColor),
               // ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: AppColors.themeColor),
-              ),
-              errorBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.red),
-              ),
+            border: const UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey, width: 1.0),
+            ),
+            enabledBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey, width: 1.0),
+            ),
+            focusedBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey, width: 1.0),
+            ),
+            isDense: true, // makes it tighter
+
               hintStyle: TextStyle(
                   fontWeight: FontWeight.w400,
                   color: Colors.grey

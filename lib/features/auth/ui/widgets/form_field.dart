@@ -25,7 +25,7 @@ class NormalTextField extends StatelessWidget {
           child: Text(
             label,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.w300,
+              fontWeight: FontWeight.w500,
               fontSize: 12
             ),
           ),
@@ -38,19 +38,8 @@ class NormalTextField extends StatelessWidget {
           onChanged: onChanged,
           decoration: InputDecoration(
             hintText: hints,
-            border: const UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: 1.0),
-            ),
-            enabledBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: 1.0),
-            ),
-            focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: 1.0),
-            ),
-            isDense: true, // makes it tighter
-            contentPadding: const EdgeInsets.symmetric(vertical: 6.0),
-          ),
-        ),
+
+        )),
       ],
     );
   }

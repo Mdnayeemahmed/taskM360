@@ -10,6 +10,8 @@ import '../widgets/password_field.dart';
 class SignInScreen extends StatelessWidget {
   static const String name = '/signInScreen';
 
+  const SignInScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final authController = Get.find<AuthController>();
@@ -37,10 +39,11 @@ class SignInScreen extends StatelessWidget {
               'Let\'s save the environment together',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w300,
+                fontFamily: "Inter",
                 fontSize: 14,
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
 
             // Email field
             NormalTextField(

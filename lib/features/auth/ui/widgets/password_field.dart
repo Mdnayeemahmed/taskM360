@@ -36,7 +36,7 @@ class _PasswordFieldState extends State<PasswordField> {
           child: Text(
             widget.label,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w300,
+                fontWeight: FontWeight.w500,
                 fontSize: 12
             ),
           ),
@@ -50,17 +50,6 @@ class _PasswordFieldState extends State<PasswordField> {
           onChanged: widget.onChanged,
           decoration: InputDecoration(
             hintText: "************",
-            border: const UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: 1.0),
-            ),
-            enabledBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: 1.0),
-            ),
-            focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: 1.0),
-            ),
-            isDense: true, // makes it tighter
-            contentPadding: const EdgeInsets.symmetric(vertical: 6.0),
             suffixIcon: IconButton(
               icon: Icon(
                 _isObscured ? Icons.visibility_off : Icons.visibility,

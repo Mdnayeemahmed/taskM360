@@ -1,53 +1,7 @@
-import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
-
-// class AuthController {
-//   final String _tokenKey = 'token';
-//   final String _userDataKey = 'token';
-//
-//   String? token;
-//   UserModel? user;
-//
-//   Future<void> saveUserData(String accessToken, UserModel userModel) async {
-//     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-//     sharedPreferences.setString(_tokenKey, accessToken);
-//     sharedPreferences.setString(_userDataKey, jsonEncode(userModel.toJson()));
-//
-//     token = accessToken;
-//     user = userModel;
-//   }
-//
-//   Future<void> getUserData() async {
-//     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-//     token = sharedPreferences.getString(_tokenKey);
-//     String? userData = sharedPreferences.getString(_userDataKey);
-//     if (userData != null) {
-//       user = UserModel.fromJson(jsonDecode(userData));
-//     }
-//   }
-//
-//   Future<bool> isUserLoggedIn() async {
-//     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-//     String? accessToken = sharedPreferences.getString(_tokenKey);
-//     if (accessToken != null) {
-//       await getUserData();
-//       return true;
-//     }
-//     return false;
-//   }
-//
-//   Future<void> clearUserData() async {
-//     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-//     await sharedPreferences.clear();
-//     token = null;
-//     user = null;
-//   }
-// }
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import '../../../../core/widgets/show_snack_bar_message.dart';
 import '../../data/models/user_model.dart';
 
 class AuthController extends GetxController {
@@ -85,7 +39,8 @@ class AuthController extends GetxController {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
       return true;
     } catch (e) {
-      Get.snackbar('Sign In Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
+      showSnackBarMessage(e.toString(),true);
+
       return false;
     } finally {
       isLoading(false);
@@ -108,7 +63,7 @@ class AuthController extends GetxController {
           .set(newUser.toJson());
       return true;
     } catch (e) {
-      Get.snackbar('Sign Up Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
+      showSnackBarMessage(e.toString(),true);
       return false;
     } finally {
       isLoading(false);

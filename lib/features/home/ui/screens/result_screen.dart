@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:taskM360/app/app_colors.dart';
 import 'package:taskM360/app/assets_path.dart';
 import 'package:taskM360/features/home/ui/widgets/scale.dart';
@@ -10,7 +9,7 @@ import '../widgets/ppm_status.dart';
 class ResultScreen extends StatefulWidget {
   static const String name = '/resultScreen';
   final Place place;
-  const ResultScreen({Key? key, required this.place}) : super(key: key);
+  const ResultScreen({super.key, required this.place});
 
 
   @override
@@ -18,28 +17,15 @@ class ResultScreen extends StatefulWidget {
 }
 
 class _ResultScreenState extends State<ResultScreen> {
-  // double co2Level = 450; // Current CO2 level
-  // int totalPlants = 189;
-  // int plantedPlants = 23;
+
 
   @override
   Widget build(BuildContext context) {
     final place = widget.place;
     final status = getPPMStatus(widget.place.ppm);
-    // final status = getPPMStatus(co2Level);
-    // Define the range for the indicator
-    // double indicatorPosition = 0.5; // 50% as an example (middle position)
-    // if (co2Level < 1000) {
-    //   indicatorPosition = 0.1; // Low CO2 level (near the left)
-    // } else if (co2Level < 1500) {
-    //   indicatorPosition = 0.4; // Medium CO2 level
-    // } else if (co2Level < 2000) {
-    //   indicatorPosition = 0.7; // High CO2 level
-    // } else {
-    //   indicatorPosition = 1.0; // Very High CO2 level (near the right)
-    // }
 
     return Scaffold(
+
       appBar: AppBar(
         leading: Icon(Icons.arrow_back_ios_new, color: AppColors.grayColor),
         backgroundColor: Colors.white, // Fixed background color
@@ -92,7 +78,7 @@ class _ResultScreenState extends State<ResultScreen> {
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
+                      color: Colors.grey.withAlpha(51),
                       spreadRadius: 1,
                       blurRadius: 6,
                       offset: Offset(0, 3),

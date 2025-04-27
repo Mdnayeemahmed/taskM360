@@ -11,6 +11,8 @@ import '../widgets/form_field.dart';
 class SignUpScreen extends StatelessWidget {
   static const String name = '/signUpScreen';
 
+  const SignUpScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final TextEditingController passwordController = TextEditingController();
@@ -40,7 +42,7 @@ class SignUpScreen extends StatelessWidget {
                 fontSize: 14,
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
 
             // Name
             NormalTextField(
@@ -60,7 +62,7 @@ class SignUpScreen extends StatelessWidget {
               label: "Email",
               hints: "user@example.com",
               controller: emailController,
-              onChanged: (v) => print("Email: $v"),
+              // onChanged: (v) => print("Email: $v"),
             ),
             const SizedBox(height: 10),
 
@@ -68,7 +70,7 @@ class SignUpScreen extends StatelessWidget {
             PasswordField(
               label: "Password",
               controller: passwordController,
-              onChanged: (v) => print("Password: $v"),
+              // onChanged: (v) => print("Password: $v"),
             ),
             const SizedBox(height: 10),
 
@@ -76,9 +78,9 @@ class SignUpScreen extends StatelessWidget {
             PasswordField(
               label: "Confirm Password",
               controller: confirmController,           // ← fixed
-              onChanged: (v) => print("Confirm: $v"),
+              // onChanged: (v) => print("Confirm: $v"),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 40),
 
             // Sign-Up Button
             Obx(() {

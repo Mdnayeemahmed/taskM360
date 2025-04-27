@@ -49,6 +49,7 @@ class PlaceController extends GetxController {
         refrigerator: i,
         computers: 2 * i,
         indoorPlants: 3 * i,
+        percentChange:5,
         kitchenBurner: 1, ppm: 500,
       ));
       officePlaces.add(Place(
@@ -61,6 +62,8 @@ class PlaceController extends GetxController {
         computers: 5 * i,
         indoorPlants: 5 * i,
         kitchenBurner: 0,
+        percentChange:10,
+
         ppm: 700,
       ));
       otherPlaces.add(Place(
@@ -71,6 +74,7 @@ class PlaceController extends GetxController {
         ac: i,
         refrigerator: 0,
         computers: i,
+        percentChange: 20,
         indoorPlants: i,
         kitchenBurner: 0,
         ppm: 600,
@@ -123,7 +127,8 @@ class PlaceController extends GetxController {
       computers: computers.value,
       indoorPlants: indoorPlants.value,
       kitchenBurner: kitchenBurner.value,
-      totalPlants: 1 + rnd.nextInt(200)
+      totalPlants: 1 + rnd.nextInt(200),
+      percentChange: 1 + rnd.nextInt(20)
 
     );
     switch (selectedType.value) {

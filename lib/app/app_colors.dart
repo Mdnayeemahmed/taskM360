@@ -7,4 +7,6 @@ class AppColors {
   static const Color deepThemeColor = Color(0xFF47BA80);
   static const Color buttonColors = Color(0xFF47BA80);
   static const Color bulletColors = Color(0xFF47BA80);
+  static const Color backGroundColor = Color.fromRGBO(250, 255, 253, 1);
+
 }

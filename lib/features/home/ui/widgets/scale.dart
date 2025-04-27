@@ -33,13 +33,10 @@ class Scale extends StatelessWidget {
   }
 
   List<double> getPointerPositions() {
-    // Calculate positions based on PPM value distribution
     final totalWidth = containerWidth;
 
-    // These represent the ppm values at each section boundary
-    const sectionBoundaries = [0, greenMax, yellowMax, orangeMax, redMax];
 
-    // Calculate the proportional width of each section
+
     final sectionWidths = [
       (greenMax / redMax) * totalWidth,
       ((yellowMax - greenMax) / redMax) * totalWidth,
@@ -47,12 +44,11 @@ class Scale extends StatelessWidget {
       ((redMax - orangeMax) / redMax) * totalWidth,
     ];
 
-    // Calculate the center positions of each section
     return [
-      sectionWidths[0] * 0.5,                          // Green center
-      sectionWidths[0] + sectionWidths[1] * 0.5,        // Yellow center
-      sectionWidths[0] + sectionWidths[1] + sectionWidths[2] * 0.5,  // Orange center
-      totalWidth - sectionWidths[0],             // Red center
+      sectionWidths[0] * 0.5,
+      sectionWidths[0] + sectionWidths[1] * 0.5,
+      sectionWidths[0] + sectionWidths[1] + sectionWidths[2] * 0.5,
+      totalWidth - sectionWidths[0],
     ];
   }
   int getCurrentSectionIndex() {
@@ -78,7 +74,6 @@ class Scale extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (ppmStatus) _buildPpmDisplay(ppm, iconColor, context),
-            // Pointer arrows
             SizedBox(
               height: 30,
               width: containerWidth,
@@ -127,7 +122,6 @@ class Scale extends StatelessWidget {
                 ],
               ),
             ),
-            // Color scale with equal sections
             _buildColorScale(),
           ],
         ),

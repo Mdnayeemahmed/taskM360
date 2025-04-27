@@ -1,13 +1,7 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:taskM360/app/assets_path.dart';
-import 'package:taskM360/features/home/ui/screens/details_screen.dart';
 import 'package:taskM360/features/home/ui/widgets/stacked_images.dart';
-
-import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
-
 import '../../../../app/app_colors.dart';
 
 class AirQualityCard extends StatelessWidget {
@@ -30,22 +24,7 @@ class AirQualityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Determine max avatars to show and overflow
-    // int showCount;
-    // int extraCount = 0;
-    //
-    // if (avatarUrls.length <= 4) {
-    //   showCount = avatarUrls.length;
-    // } else if (avatarUrls.length == 5) {
-    //   showCount = 3;
-    //   extraCount = 2;
-    // } else if (avatarUrls.length == 6) {
-    //   showCount = 5;
-    //   extraCount = 1;
-    // } else {
-    //   showCount = 5;
-    //   extraCount = avatarUrls.length - 5;
-    // }
+
 
     final screenWidth = MediaQuery.of(context).size.height;
     final isSmallScreen = screenWidth < 700; // Adjust threshold as needed
@@ -54,11 +33,9 @@ class AirQualityCard extends StatelessWidget {
     int extraCount = 0;
 
     if (isSmallScreen) {
-      // Small screen: Show up to 3 avatars
       showCount = avatarUrls.length <= 3 ? avatarUrls.length : 3;
       extraCount = avatarUrls.length > 3 ? avatarUrls.length - 3 : 0;
     } else {
-      // Existing logic for larger screens
       if (avatarUrls.length <= 4) {
         showCount = avatarUrls.length;
       } else if (avatarUrls.length == 5) {
@@ -73,6 +50,8 @@ class AirQualityCard extends StatelessWidget {
       }
     }
 
+    log(extraCount.toString());
+
     final avatarWidgets = avatarUrls.take(showCount).map((url) {
       return CircleAvatar(
         radius: 24,
@@ -80,8 +59,6 @@ class AirQualityCard extends StatelessWidget {
         child: CircleAvatar(radius: 22, backgroundImage: NetworkImage(url)),
       );
     }).toList();
-
-
     if (extraCount > 0) {
       avatarWidgets.add(
         CircleAvatar(
@@ -223,7 +200,7 @@ class AirQualityCard extends StatelessWidget {
                 // Stacked Avatars
                 StackedWidgets(
                   items: avatarWidgets,
-                  size: 36,
+                  size: 30,
                   xShift: 15,
                   direction: TextDirection.rtl,
                 ),

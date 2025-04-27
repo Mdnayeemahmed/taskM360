@@ -1,43 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:taskM360/app/app_colors.dart';
 
 import '../../../../app/assets_path.dart';
+import '../widgets/otp_pin_box.dart';
 
 // OTP Input Box Widget
-class OTPInputBox extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 50,
-      height: 50,
-      child: TextField(
-        textAlign: TextAlign.center,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.0)),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            borderSide: BorderSide(color: AppColors.grayColor, width: 1.0),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            borderSide: BorderSide(color: AppColors.themeColor, width: 1.0),
-          ),
-          counterText: "",
-        ),
-        maxLength: 1,
-        keyboardType: TextInputType.number,
-        obscureText: true,
-      ),
-    );
-  }
-}
 
 class VerifyOTPScreen extends StatelessWidget {
   static const String name = '/verifyOTPScreen';
 
+  const VerifyOTPScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final TextEditingController passwordController = TextEditingController();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(left: 33.0, top: 87, right: 33),
@@ -47,22 +21,50 @@ class VerifyOTPScreen extends StatelessWidget {
             Text(
               'Verify Otp',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w700,
-                fontSize: 30,
-              ),
+                    fontWeight: FontWeight.w700,
+                    fontSize: 30,
+                  ),
             ),
             SizedBox(height: 10),
             Text(
               'Recover your account in easy steps',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w300,
-                fontSize: 14,
-              ),
+                    fontWeight: FontWeight.w300,
+                    fontSize: 14,
+                    fontFamily: "Inter",
+                  ),
             ),
             Spacer(),
-            Text(
-              'An email has been sent to user@example.com. Please enter the sent OTP.',
-              style: TextStyle(fontSize: 14, color: Colors.black54),
+            Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'An email has been sent to ',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black54,
+                      fontFamily: "Inter",
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'user@example.com',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontFamily: "Inter",
+                      fontWeight: FontWeight.w600, // Optional: make it a bit bolder if you want
+                    ),
+                  ),
+                  TextSpan(
+                    text: '. Please enter the sent OTP.',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black54,
+                      fontFamily: "Inter",
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 20),
             Row(
@@ -74,19 +76,19 @@ class VerifyOTPScreen extends StatelessWidget {
                 OTPInputBox(),
               ],
             ),
-
             Spacer(),
-
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacementNamed(context, '/resetPasswordScreen'); // Or your named route
-
+                Navigator.pushReplacementNamed(
+                    context, '/resetPasswordScreen'); // Or your named route
               },
               child: Text('Send Otp'),
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(double.infinity, 50),
               ),
             ),
+            SizedBox(height: 20),
+
             Center(
               child: TextButton(
                 onPressed: () {},
@@ -108,14 +110,12 @@ class VerifyOTPScreen extends StatelessWidget {
                 ),
               ),
             ),
-
             Spacer(),
             Align(
               alignment: Alignment.bottomCenter,
               child: Image.asset(AssetsPath.logoNavPng, height: 17),
             ),
             const SizedBox(height: 20),
-
           ],
         ),
       ),
